@@ -1,7 +1,13 @@
 node {
-    try {
-        stage('Install JDK-17') {
+    try {        
+       stage('checkout code') {
             sh '''
+                git clone https://github.com/S-Saha-GenAI-Consulting/QAT.AI.git            
+                cd QAT.AI
+                '''
+        }
+        stage('Install JDK-17') {
+            sh '''  
                 #!/bin/bash
                 export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
             '''
