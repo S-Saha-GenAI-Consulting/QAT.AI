@@ -1,47 +1,60 @@
 # QAT.AI Workspace
 
-This workspace contains two main projects: `qGen-HUB` and `Selenium-Automation`. Below is an overview of the structure and purpose of each project.
+This repository contains the QAT.AI project, which is designed to streamline test automation and prompt generation. The workspace is structured to support modular development, testing, and output generation.
 
 ---
 
-## qGen-HUB
-
-### Description
-`qGen-HUB` is a utility for generating test cases, prompts, and analyzing requirements. It is designed to assist in functional test case generation, automation script creation, requirement gap analysis, and user story generation.
-
-### Directory Structure
-qGen-HUB/ ├── 1.Input/ │ └── Template.js # Input templates for test case generation ├── 2.Prompt_Library/ │ ├── Context.js # Context management for prompts │ └── TestCase.js # Test case prompt definitions ├── 3.Output/ │ └── TestCase.js # Generated test case outputs
-
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Jenkins Integration](#jenkins-integration)
+- [License](#license)
 
 ---
 
-## Selenium-Automation
-
-### Description
-`Selenium-Automation` is a Selenium-based automation framework designed to test web applications. It integrates TestNG and Cucumber for test execution and reporting.
-
-### Directory Structure
-Selenium-Automation/ ├── pom.xml # Maven configuration file ├── .vscode/ │ └── settings.json # VS Code workspace settings ├── src/ │ ├── main/java/ # Application source code (if any) │ └── test/java/ # Test source code ├── target/ │ ├── classes/ # Compiled classes │ ├── surefire-reports/ # TestNG and Cucumber reports │ └── reports/ # HTML and JSON reports
+## Project Structure
+JenkinsFile # Jenkins pipeline configuration mvnw, mvnw.cmd # Maven wrapper scripts pom.xml # Maven project configuration README.md # Project documentation .mvn/ # Maven wrapper configuration .vscode/ # VS Code workspace settings qGen-HUB/ # Core modules for input, prompt library, and output src/ # Source code for main and test Java files target/ # Compiled classes, reports, and test outputs
 
 
-### Features
-- **Cucumber Integration**: Write tests in Gherkin syntax.
-- **TestNG Support**: Manage test execution and reporting.
-- **Reusable Methods**: Common utilities for WebDriver operations.
-- **HTML and JSON Reports**: Automatically generated after test execution.
+### Key Directories:
+- **qGen-HUB/1.Input/**: Contains input templates for prompt generation.
+- **qGen-HUB/2.Prompt_Library/**: Includes reusable prompt logic and context files.
+- **qGen-HUB/3.Output/**: Stores generated outputs like test cases and documentation.
+- **src/main/java/**: Main Java source code.
+- **src/test/java/**: Test Java source code.
+- **target/**: Build artifacts, reports, and compiled classes.
 
-### Setup
-1. Install dependencies using Maven:
+---
+
+## Prerequisites
+
+- **Java 17**: Ensure Java 17 is installed and configured.
+- **Maven**: Use the Maven wrapper (`mvnw`) included in the repository.
+- **Jenkins**: For CI/CD integration.
+
+---
+
+## Setup Instructions
+
+1. Clone the repository:
    ```sh
-   mvn clean install
+   git clone https://github.com/S-Saha-GenAI-Consulting/QAT.AI.git
+   cd QAT.AI
 
+2. Ensure Java 17 is installed: java -version
+
+3. Build the project using Maven: ./mvnw clean install
+
+4. Testing
 Running Tests
-To execute tests, run the following Maven command:
+Execute all tests using Maven: mvnw clean test
 
-Test reports will be generated in the target/surefire-reports/ directory.
+5. Jenkins Integration
+This project includes a JenkinsFile for CI/CD automation. To set up Jenkins:
 
-License
-This workspace is licensed under the MIT License. See the LICENSE file for details.
-
-Contact
-For any questions or issues, please contact [sayantan.saha@outlook.in]. ```
+Configure a Jenkins job to pull this repository.
+Ensure the JAVA_HOME environment variable is set to Java 17.
+Trigger the pipeline to build and test the project.
