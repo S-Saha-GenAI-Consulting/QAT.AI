@@ -5,11 +5,11 @@ try {
        export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
       '''
     }
-    stage('Download Driver') {
+    stage('Run Test') {
       sh '''
         #!/bin/bash
         chmod u+x ./mvnw
-        ./mvnw clean downloadDriver
+        ./mvnw clean test
       '''
     }
 
