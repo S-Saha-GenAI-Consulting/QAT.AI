@@ -1,24 +1,24 @@
-try {
-    stage('Install JDK-17') {
-      sh '''
-        #!/bin/bash
-       export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
-      '''
+pipeline {
+ 
+ 
+  stages {
+ 
+    stage('Run Tests') {
+ 
+      steps {
+ 
+          script {
+ 
+   sh 'export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home'
+ 
+            sh './mvnw clean test'
+ 
+          }
+ 
+        }
+ 
+      }
+ 
     }
-    stage('Run Test') {
-      sh '''
-        #!/bin/bash
-        chmod u+x ./mvnw
-        ./mvnw clean test
-      '''
-    }
-
-  } catch (e) {
-    echo 'Build failed with errors'
-    throw e
-  } finally {
-    def currentResult = currentBuild.result
-    if (currentResult == 'FAILURE') {
-      notifyEmail(emailTo)
-    }
-  }
+ 
+}
