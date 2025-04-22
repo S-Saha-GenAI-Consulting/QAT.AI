@@ -1,11 +1,5 @@
 node {
     try {        
-       stage('checkout code') {
-            sh '''
-                git clone https://github.com/S-Saha-GenAI-Consulting/QAT.AI.git            
-                cd QAT.AI
-                '''
-        }
         stage('Install JDK-17') {
             sh '''  
                 #!/bin/bash
@@ -22,10 +16,5 @@ node {
     } catch (e) {
         echo 'Build failed with errors'
         throw e
-    } finally {
-        def currentResult = currentBuild.result
-        if (currentResult == 'FAILURE') {
-            notifyEmail(emailTo)
-        }
     }
 }
