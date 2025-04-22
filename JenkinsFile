@@ -7,13 +7,13 @@ pipeline {
             }
         }
         stage('Debug Checkout') {
-    steps {
-        sh '''
-        echo "Debugging repository contents:"
-        ls -la
-        '''
-    }
-}
+            steps {
+                sh '''
+                echo "Debugging repository contents:"
+                ls -la
+                '''
+            }
+        }
         stage('Install JDK-17') {
             steps {
                 sh '''
@@ -24,6 +24,11 @@ pipeline {
         stage('Clean Workspace') {
             steps {
                 deleteDir()
+            }
+        }
+        stage('Re-Checkout SCM') { // Add this stage to restore files after cleaning
+            steps {
+                checkout scm
             }
         }
         stage('Debug Workspace') {
