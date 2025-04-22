@@ -1,17 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout SCM') {
+
+        stage('Clean Workspace') {
             steps {
-                checkout scm
-            }
-        }
-        stage('Debug Checkout') {
-            steps {
-                sh '''
-                echo "Debugging repository contents:"
-                ls -la
-                '''
+                deleteDir()
             }
         }
         stage('Install JDK-17') {
@@ -21,20 +14,15 @@ pipeline {
                 '''
             }
         }
-        stage('Clean Workspace') {
-            steps {
-                deleteDir()
-            }
-        }
-        stage('Re-Checkout SCM') { // Add this stage to restore files after cleaning
+        stage('Checkout SCM') {
             steps {
                 checkout scm
             }
         }
-        stage('Debug Workspace') {
+        stage('Debug Checkout') {
             steps {
                 sh '''
-                echo "Listing workspace contents:"
+                echo "Debugging repository contents:"
                 ls -la
                 '''
             }
