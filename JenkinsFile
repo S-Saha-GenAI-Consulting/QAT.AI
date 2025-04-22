@@ -1,20 +1,21 @@
-node {
-    try {        
+// filepath: /Users/sayantansaha/Downloads/QAT.AI/JenkinsFile
+pipeline {
+    agent any
+    stages {
         stage('Install JDK-17') {
-            sh '''  
-                #!/bin/bash
+            steps {
+                sh '''
                 export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
-            '''
+                '''
+            }
         }
         stage('Run Test') {
-            sh '''
-                #!/bin/bash
-                
-                ./mvnw clean test
-            '''
+            steps {
+                sh '''
+                chmod +x ./mvnw
+                ./mvn clean test
+                '''
+            }
         }
-    } catch (e) {
-        echo 'Build failed with errors'
-        throw e
     }
 }

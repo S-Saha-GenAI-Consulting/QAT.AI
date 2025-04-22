@@ -1,2 +1,1 @@
 Go through the entire workspace at path: /Users/sayantansaha/Downloads/Selenium-Automation/selenium_automation/src, specifically the reusable methods and wrappers around webdriver to generate new scripts
-export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
