@@ -15,7 +15,7 @@ node {
         stage('Run Test') {
             sh '''
                 #!/bin/bash
-                chmod u+x ./mvnw
+                
                 ./mvnw clean test
             '''
         }
