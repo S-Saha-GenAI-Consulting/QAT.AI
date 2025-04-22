@@ -1,0 +1,24 @@
+try {
+    stage('Install JDK-17') {
+      sh '''
+        #!/bin/bash
+       export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
+      '''
+    }
+    stage('Download Driver') {
+      sh '''
+        #!/bin/bash
+        chmod u+x ./mvnw
+        ./mvnw clean downloadDriver
+      '''
+    }
+
+  } catch (e) {
+    echo 'Build failed with errors'
+    throw e
+  } finally {
+    def currentResult = currentBuild.result
+    if (currentResult == 'FAILURE') {
+      notifyEmail(emailTo)
+    }
+  }
