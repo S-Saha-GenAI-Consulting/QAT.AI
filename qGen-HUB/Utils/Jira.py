@@ -7,7 +7,7 @@ def fetch_jira_test_cases(jira_url, username, api_token, project_key, output_fil
         # Connect to Jira
         jira = JIRA(server=jira_url, basic_auth=(username, api_token))        
         # JQL query to fetch test cases
-        jql_query = f'project = "{project_key}" AND issuetype = "Test" ORDER BY created DESC'
+        jql_query = f'project = "{project_key}" AND issuetype = "Task" ORDER BY created DESC'
         issues = jira.search_issues(jql_query, maxResults=100)
 
         # Write test cases to the output file
