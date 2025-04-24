@@ -59,6 +59,6 @@ This project includes a JenkinsFile for CI/CD automation. To set up Jenkins:
 
 * Ensure the JAVA_HOME environment variable is set to Java 24.
 
-* Run command on terminal: java -jar jenkins.war --enable-future-java
+* Run command on terminal: brew services start jenkins-lts
 
 * Trigger the pipeline to build and test the project.
