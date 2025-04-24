@@ -55,6 +55,10 @@ Execute all tests using Maven: mvnw clean test
 5. Jenkins Integration
 This project includes a JenkinsFile for CI/CD automation. To set up Jenkins:
 
-Configure a Jenkins job to pull this repository.
-Ensure the JAVA_HOME environment variable is set to Java 17.
-Trigger the pipeline to build and test the project.
+* Configure a Jenkins job to pull this repository.
+
+* Ensure the JAVA_HOME environment variable is set to Java 24.
+
+* Run command on terminal: java -jar jenkins.war --enable-future-java
+
+* Trigger the pipeline to build and test the project.

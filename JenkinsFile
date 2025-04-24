@@ -7,13 +7,7 @@ pipeline {
                 deleteDir()
             }
         }
-        stage('Install JDK-17') {
-            steps {
-                sh '''
-                export JAVA_HOME=/Users/sayantansaha/Downloads/jdk-17.0.12.jdk/Contents/Home
-                '''
-            }
-        }
+        
         stage('Checkout SCM') {
             steps {
                 checkout scm
