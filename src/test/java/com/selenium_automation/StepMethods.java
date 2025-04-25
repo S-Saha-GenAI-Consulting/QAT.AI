@@ -47,7 +47,7 @@ public class StepMethods{
             username.sendKeys("abcd");
             username.clear();
 
-            FileInputStream fis = new FileInputStream(new File("src/test/java/com/selenium_automation/Resources/config.properties"));
+            FileInputStream fis = new FileInputStream(new File("src/config.properties"));
 
             Properties prop = new Properties();
             prop.load(fis);

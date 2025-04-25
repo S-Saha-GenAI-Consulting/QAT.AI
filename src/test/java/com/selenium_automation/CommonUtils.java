@@ -3,9 +3,7 @@ package com.selenium_automation;
 
 import static com.selenium_automation.Driver.*;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.*;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -20,7 +18,7 @@ public class CommonUtils{
     public static void getUrl(){
 
         try {
-            FileInputStream fis = new FileInputStream(new File("src/test/java/com/selenium_automation/Resources/config.properties"));
+            FileInputStream fis = new FileInputStream(new File("/Users/sayantansaha/Downloads/QAT.AI/src/config.properties"));
             Properties prop = new Properties();
             prop.load(fis);
 
