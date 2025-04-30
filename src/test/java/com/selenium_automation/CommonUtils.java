@@ -9,6 +9,9 @@ import java.io.FileInputStream;
 
 
 import java.util.Properties;
+import java.util.Set;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,7 +31,8 @@ public class CommonUtils{
             String url = prop.getProperty("URL");
             dr.get(url);
 
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             logger.error("Exception occurred: {}", e.getMessage(), e);
         }
 
@@ -36,8 +40,9 @@ public class CommonUtils{
     }
     
     public static void tearDown() {
-        dr.quit();
-
+        if (dr != null) {
+            dr.quit();
+        }
     }
 
     public static void logger(Exception e){
@@ -49,7 +54,6 @@ public class CommonUtils{
 
     public static void clearText(WebElement element){
         try{
-
             new Actions(dr)
             .keyDown(element, Keys.COMMAND)
             .sendKeys("a").keyUp(element, Keys.COMMAND)
@@ -61,6 +65,39 @@ public class CommonUtils{
         catch(Exception e){
             logger(e);
         }
+    }
+
+    public static void rightClick(WebElement element){
+        try{
+            new Actions(dr).
+            contextClick(element)
+            .build().perform();
+        }
+        catch(Exception e){
+            logger(e);
+        }
+    }
+
+    public static void zoom(WebElement element, int zoomLevel) {
+        JavascriptExecutor js = (JavascriptExecutor) dr;
+        js.executeScript("arguments[0].style.transform = 'scale(' + arguments[1] + ')';", element, zoomLevel);    
+    }
+
+    public static void getWindowhandles(){
+        //Store all window handles in a set
+        Set<String> allWindowHandles = dr.getWindowHandles();
+        //Iterate through the set and print each window handle
+        for (String windowHandle : allWindowHandles) {
+            System.out.println("Window Handle: " + windowHandle);
+        }
+        //Switch to the new window
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(dr.getWindowHandle())) {
+                dr.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
     }
    
 }
