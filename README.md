@@ -31,7 +31,7 @@ JenkinsFile # Jenkins pipeline configuration mvnw, mvnw.cmd # Maven wrapper scri
 
 ## Prerequisites
 
-- **Java 17**: Ensure Java 17 is installed and configured.
+- **Java 24**: Ensure Java 24 is installed and configured.
 - **Maven**: Use the Maven wrapper (`mvnw`) included in the repository.
 - **Jenkins**: For CI/CD integration.
 
@@ -44,7 +44,7 @@ JenkinsFile # Jenkins pipeline configuration mvnw, mvnw.cmd # Maven wrapper scri
    git clone https://github.com/S-Saha-GenAI-Consulting/QAT.AI.git
    cd QAT.AI
 
-2. Ensure Java 17 is installed: java -version
+2. Ensure Java 24 is installed: java -version
 
 3. Build the project using Maven: ./mvnw clean install
 
