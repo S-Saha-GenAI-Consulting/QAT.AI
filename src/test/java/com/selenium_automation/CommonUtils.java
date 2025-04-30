@@ -9,6 +9,9 @@ import java.io.FileInputStream;
 
 
 import java.util.Properties;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
     
 public class CommonUtils{
@@ -44,5 +47,20 @@ public class CommonUtils{
         logger.info("Driver closed");
     }
 
+    public static void clearText(WebElement element){
+        try{
+
+            new Actions(dr)
+            .keyDown(element, Keys.COMMAND)
+            .sendKeys("a").keyUp(element, Keys.COMMAND)
+            .pause(100)
+            .sendKeys(Keys.DELETE)
+            .build()
+            .perform();
+        }
+        catch(Exception e){
+            logger(e);
+        }
+    }
    
 }

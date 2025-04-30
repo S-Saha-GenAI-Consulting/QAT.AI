@@ -1,14 +1,11 @@
 package com.selenium_automation.PageFactories;
 
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-//import static com.selenium_automation.Driver.dr;
 
 public class LoginPage{
 
-    
     //Page Factory
     @FindBy(id = "user-name")
     public static WebElement username;

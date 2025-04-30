@@ -13,8 +13,6 @@ import static com.selenium_automation.Driver.dr;
 
 import static com.selenium_automation.PageFactories.LoginPage.*;
 
-
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 
 import com.selenium_automation.PageFactories.LoginPage;
@@ -44,8 +42,11 @@ public class StepMethods{
 
         try{
 
+            //test random credentials can be entered and deleted
             username.sendKeys("abcd");
-            username.clear();
+            password.sendKeys("1234");
+            clearText(username);
+            clearText(password);
 
             FileInputStream fis = new FileInputStream(new File("src/config.properties"));
 
