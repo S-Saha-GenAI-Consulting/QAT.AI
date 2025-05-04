@@ -1,0 +1,2 @@
+qGen-HUB/sample-app-web-main: This is a sample web application. Go through thie source code and generate user stories for entire functional flow of the application.
+Follow the template at path: qGen-HUB/1.Input/Template.js

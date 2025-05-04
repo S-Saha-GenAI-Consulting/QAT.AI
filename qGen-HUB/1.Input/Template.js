@@ -1,16 +1,9 @@
-Test Case ID:
-Test Case Name:
-Test Case Description:
+User Story Name:
 
-Pre Condition:
-///////
-Test Steps:
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-4. [Step 4]
-.
-.
-.
+User Story Description:
 
-Expected Outcome:
+Acceptance Criteria:
+1.
+2.
+3.
+4.

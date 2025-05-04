@@ -20,9 +20,10 @@ JenkinsFile # Jenkins pipeline configuration mvnw, mvnw.cmd # Maven wrapper scri
 
 
 ### Key Directories:
-- **qGen-HUB/1.Input/**: Contains input templates for prompt generation.
+- qGen-HUB: Wrapper on top of GitHub Copilot: Reuse prompts, templates. This enables the user to scale up GitHub Copilot across use cases.
+- **qGen-HUB/1.Input/**: Contains input templates for output.
 - **qGen-HUB/2.Prompt_Library/**: Includes reusable prompt logic and context files.
-- **qGen-HUB/3.Output/**: Stores generated outputs like test cases and documentation.
+- **qGen-HUB/3.Output/**: Stores generated outputs like user stories
 - **src/main/java/**: Main Java source code.
 - **src/test/java/**: Test Java source code.
 - **target/**: Build artifacts, reports, and compiled classes.
