@@ -2,7 +2,7 @@ package com.selenium_automation;
 
 import org.openqa.selenium.support.PageFactory;
 
-import com.selenium_automation.PageFactories.LoginPage;
+import com.selenium_automation.PageFactories.*;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -24,7 +24,10 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
     static {
         // Call startup method before tests
         CommonUtils.startUp();
+        
+        //Initialize PageFactory elements for all page classes
         PageFactory.initElements(CommonUtils.dr, LoginPage.class);
+        PageFactory.initElements(CommonUtils.dr, Sidebar.class);
 
         // Add a shutdown hook to ensure teardown is called after tests
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

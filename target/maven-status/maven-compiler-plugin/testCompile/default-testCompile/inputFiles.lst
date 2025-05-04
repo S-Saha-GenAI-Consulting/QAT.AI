@@ -2,6 +2,7 @@
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/Steps/Step.java
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/Asserts.java
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/CommonUtils.java
+/Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/PageFactories/Sidebar.java
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/PageFactories/LoginPage.java
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/StepMethods.java
 /Users/sayantansaha/Downloads/QAT.AI/src/test/java/com/selenium_automation/Waits.java

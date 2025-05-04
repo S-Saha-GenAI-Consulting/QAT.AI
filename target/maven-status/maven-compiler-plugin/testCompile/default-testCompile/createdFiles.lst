@@ -1,5 +1,6 @@
 com/selenium_automation/Waits.class
 com/selenium_automation/RunnerTest.class
+com/selenium_automation/PageFactories/Sidebar.class
 com/selenium_automation/PageFactories/LoginPage.class
 com/selenium_automation/Steps/Step.class
 com/selenium_automation/StepMethods.class

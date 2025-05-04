@@ -5,6 +5,7 @@ import org.apache.logging.log4j.*;
 import java.io.File;
 import java.io.FileInputStream;
 
+import static com.selenium_automation.PageFactories.Sidebar.*;
 
 import java.util.Properties;
 import java.util.Set;
@@ -44,6 +45,18 @@ public class CommonUtils extends DriverBase{
 
     // Explicitly quit WebDriver and clean up resources
     public static void tearDown() {
+        
+        //logout from the application
+
+        try {
+            menu.click();
+            Thread.sleep(2000);
+            logout.click();
+        } catch (InterruptedException e) {
+            logger.error("Thread sleep interrupted: {}", e.getMessage(), e);
+        }
+
+
         try {
             if (dr != null) {
                 dr.quit(); // Close the browser
