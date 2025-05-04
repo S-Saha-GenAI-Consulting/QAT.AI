@@ -1,6 +1,6 @@
 # QAT.AI Workspace
 
-This repository contains the QAT.AI project, which is designed to streamline test automation and prompt generation. The workspace is structured to support modular development, testing, and output generation.
+This repository contains the QAT.AI project, which is designed to streamline test automation and SWE artefacts generation. The workspace is structured to support modular development, testing, and automated SWE artefacts generation.
 
 ---
 
