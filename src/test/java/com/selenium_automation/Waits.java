@@ -4,7 +4,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static com.selenium_automation.Driver.*;
+
+import static com.selenium_automation.CommonUtils.*;
 
 public class Waits {
 

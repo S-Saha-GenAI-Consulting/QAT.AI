@@ -7,7 +7,7 @@ public class Base {
 
 	private static WebDriver driver;
 	
-	public static WebDriver dr;
+	public static  WebDriver dr;
 
 	public WebDriver getDriver(){
 		dr = driver;

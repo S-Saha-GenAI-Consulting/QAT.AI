@@ -8,32 +8,26 @@ import java.io.File;
 
 
 import java.util.Properties;
+
 import static com.selenium_automation.Asserts.*;
-import static com.selenium_automation.Driver.dr;
 
 import static com.selenium_automation.PageFactories.LoginPage.*;
 
-import org.openqa.selenium.support.PageFactory;
-
-import com.selenium_automation.PageFactories.LoginPage;
 
 
 public class StepMethods{
+
+    CommonUtils commonUtils = new CommonUtils();
 
 
     public static void loginTitle(){
 
         try{
-
-            getUrl();
-            PageFactory.initElements(dr, LoginPage.class);
             WaitTitleContains("Swag Labs");
             System.out.println("Page title is: " + dr.getTitle());
             assertEquals(dr.getTitle(), "Swag Labs");
-
         }
         catch(Exception e){
-            tearDown();
             logger(e);
         }
     }
@@ -63,7 +57,6 @@ public class StepMethods{
 
         }
         catch(Exception e){
-            tearDown();
             logger(e);
         }
 
@@ -74,10 +67,8 @@ public class StepMethods{
         try{
             WaitTitleContains("Swag Labs");
             assertEquals(dr.getTitle(), "Swag Labs");
-            tearDown();
         }
         catch(Exception e){
-            tearDown();
             logger(e);
         }
     

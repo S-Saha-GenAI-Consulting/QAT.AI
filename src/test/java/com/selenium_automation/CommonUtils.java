@@ -1,8 +1,6 @@
 package com.selenium_automation;
 
 
-import static com.selenium_automation.Driver.*;
-
 import org.apache.logging.log4j.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,42 +11,53 @@ import java.util.Set;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
     
-public class CommonUtils{
+public class CommonUtils extends DriverBase{
 
     private static final Logger logger = LogManager.getLogger(CommonUtils.class);
-    
-    public static void getUrl(){
+    public static WebDriver dr;
 
+    // Explicitly initialize WebDriver and navigate to the URL
+    public static void startUp() {
         try {
-            FileInputStream fis = new FileInputStream(new File("/Users/sayantansaha/Downloads/QAT.AI/src/config.properties"));
+            dr = setUp(); // Initialize WebDriver
+            FileInputStream fis = new FileInputStream(new File("src/config.properties"));
             Properties prop = new Properties();
             prop.load(fis);
 
             String url = prop.getProperty("URL");
-            dr.get(url);
-
-        } 
-        catch (Exception e) {
-            logger.error("Exception occurred: {}", e.getMessage(), e);
+            if (url != null && !url.isEmpty()) {
+                dr.get(url);
+                logger.info("Navigated to URL: {}", url);
+            } else {
+                logger.error("URL is not defined in the properties file.");
+            }
+        } catch (Exception e) {
+            logger.error("Exception occurred during setup: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to initialize WebDriver or navigate to URL.", e);
         }
-
-        
     }
-    
+
+    // Explicitly quit WebDriver and clean up resources
     public static void tearDown() {
-        if (dr != null) {
-            dr.quit();
+        try {
+            if (dr != null) {
+                dr.quit(); // Close the browser
+                dr = null; // Reset the static driver reference
+                logger.info("Browser closed successfully.");
+            }
+        } catch (Exception e) {
+            logger.error("Error while closing the browser: {}", e.getMessage(), e);
         }
     }
 
     public static void logger(Exception e){
         
         logger.error("Exception occurred: {}", e.getMessage(), e);
-        tearDown();
         logger.info("Driver closed");
     }
 
