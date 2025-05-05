@@ -10,7 +10,7 @@ public class Step{
 
     @Given("user is on the Swag Labs login page")
     public void getloginTitle(){   
-        loginTitle(); 
+        launchPageTitle(); 
     }
     
     @When("user enters valid credentials and clicks login button")
@@ -20,7 +20,6 @@ public class Step{
     
     @Then("user should be redirected to the Swag Labs inventory page")
     public void verifyProductPage() {
-        verifyProduct();
-        
+        verifyProduct();  
     }
 }

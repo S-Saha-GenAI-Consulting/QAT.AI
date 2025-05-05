@@ -8,6 +8,7 @@ import java.io.File;
 
 
 import java.util.Properties;
+import org.openqa.selenium.support.ui.Select;
 
 import static com.selenium_automation.Asserts.*;
 
@@ -21,7 +22,7 @@ public class StepMethods{
     CommonUtils commonUtils = new CommonUtils();
 
 
-    public static void loginTitle(){
+    public static void launchPageTitle(){
 
         try{
             WaitTitleContains("Swag Labs");
@@ -56,6 +57,8 @@ public class StepMethods{
     
             assertEquals(dr.getTitle(), "Swag Labs");
 
+            Thread.sleep(3000);
+
         }
         catch(Exception e){
             logger(e);
@@ -68,10 +71,16 @@ public class StepMethods{
         try{
             WaitTitleContains("Swag Labs");
             assertEquals(dr.getTitle(), "Swag Labs");
-            scrollAction(SauceLabsOnesie);
             Thread.sleep(3000);
+            
+            new Select(sortBy).selectByVisibleText("Price (high to low)");
+            Thread.sleep(3000);
+
+            scrollAction(SauceLabsOnesie);
             assertEquals(SauceLabsOnesie.getText(), "Sauce Labs Onesie");
+            Thread.sleep(3000);
             SauceLabsOnesie.click();
+            Thread.sleep(3000);
         }
         catch(Exception e){
             logger(e);
