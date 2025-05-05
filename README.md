@@ -28,7 +28,7 @@ JenkinsFile # Jenkins pipeline configuration mvnw, mvnw.cmd # Maven wrapper scri
 - **src/test/java/**: Test Java source code.
 - **target/**: Build artifacts, reports, and compiled classes.
 
----
+-------------
 
 ## Prerequisites
 
