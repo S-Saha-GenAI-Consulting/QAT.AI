@@ -28,6 +28,7 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
         //Initialize PageFactory elements for all page classes
         PageFactory.initElements(CommonUtils.dr, LoginPage.class);
         PageFactory.initElements(CommonUtils.dr, Sidebar.class);
+        PageFactory.initElements(CommonUtils.dr, ProductPage.class);
 
         // Add a shutdown hook to ensure teardown is called after tests
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

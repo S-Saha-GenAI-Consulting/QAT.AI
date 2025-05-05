@@ -6,3 +6,4 @@ com/selenium_automation/Steps/Step.class
 com/selenium_automation/StepMethods.class
 com/selenium_automation/CommonUtils.class
 com/selenium_automation/Asserts.class
+com/selenium_automation/PageFactories/ProductPage.class

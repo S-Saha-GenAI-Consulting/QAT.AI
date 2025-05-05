@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.selenium_automation.Asserts.*;
 
 import static com.selenium_automation.PageFactories.LoginPage.*;
+import static com.selenium_automation.PageFactories.ProductPage.*;
 
 
 
@@ -67,6 +68,10 @@ public class StepMethods{
         try{
             WaitTitleContains("Swag Labs");
             assertEquals(dr.getTitle(), "Swag Labs");
+            scrollAction(SauceLabsOnesie);
+            Thread.sleep(3000);
+            assertEquals(SauceLabsOnesie.getText(), "Sauce Labs Onesie");
+            SauceLabsOnesie.click();
         }
         catch(Exception e){
             logger(e);

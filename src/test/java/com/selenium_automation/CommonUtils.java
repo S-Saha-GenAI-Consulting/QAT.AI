@@ -100,6 +100,23 @@ public class CommonUtils extends DriverBase{
         }
     }
 
+    public static void scrollAction(WebElement element) {
+        try {
+            // Scroll the element into view using JavascriptExecutor
+            JavascriptExecutor js = (JavascriptExecutor) dr;
+            js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", element);
+    
+            // Perform the action after scrolling
+            new Actions(dr)
+                .moveToElement(element)
+                .click()
+                .build()
+                .perform();
+        } catch (Exception e) {
+            logger.error("Error during scrollAction: {}", e.getMessage(), e);
+        }
+    }
+
     public static void zoom(WebElement element, int zoomLevel) {
         JavascriptExecutor js = (JavascriptExecutor) dr;
         js.executeScript("arguments[0].style.transform = 'scale(' + arguments[1] + ')';", element, zoomLevel);    
