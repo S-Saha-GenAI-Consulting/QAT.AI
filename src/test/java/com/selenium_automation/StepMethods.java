@@ -15,16 +15,20 @@ import static com.selenium_automation.Asserts.*;
 import static com.selenium_automation.PageFactories.LoginPage.*;
 import static com.selenium_automation.PageFactories.ProductPage.*;
 
+import static com.selenium_automation.ExtentReportUtil.*;
+
+
 
 
 public class StepMethods{
-
-    CommonUtils commonUtils = new CommonUtils();
 
 
     public static void launchPageTitle(){
 
         try{
+
+            createAndGetTest("Login Page Test");
+            
             WaitTitleContains("Swag Labs");
             System.out.println("Page title is: " + dr.getTitle());
             assertEquals(dr.getTitle(), "Swag Labs");
@@ -38,6 +42,7 @@ public class StepMethods{
 
         try{
 
+            createAndGetTest("Login Page Test");
             //test random credentials can be entered and deleted
             username.sendKeys("abcd");
             password.sendKeys("1234");
@@ -59,6 +64,7 @@ public class StepMethods{
 
             Thread.sleep(3000);
 
+
         }
         catch(Exception e){
             logger(e);
@@ -69,6 +75,9 @@ public class StepMethods{
     public static void verifyProduct(){
 
         try{
+
+            createAndGetTest("Login Page Test");
+
             WaitTitleContains("Swag Labs");
             assertEquals(dr.getTitle(), "Swag Labs");
             Thread.sleep(3000);
@@ -81,6 +90,8 @@ public class StepMethods{
             Thread.sleep(3000);
             SauceLabsOnesie.click();
             Thread.sleep(3000);
+            
+
         }
         catch(Exception e){
             logger(e);

@@ -1,11 +1,16 @@
 package com.selenium_automation;
 
+import java.io.IOException;
+import java.awt.Desktop;
+import java.io.File;
+
 import org.openqa.selenium.support.PageFactory;
 
 import com.selenium_automation.PageFactories.*;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.*;
 
 @CucumberOptions(
     plugin = {
@@ -21,46 +26,47 @@ import io.cucumber.testng.CucumberOptions;
 )
 public class RunnerTest extends AbstractTestNGCucumberTests {
 
-    static {
+    {
         // Call startup method before tests
         CommonUtils.startUp();
         
-        //Initialize PageFactory elements for all page classes
+        // Initialize PageFactory elements for all page classes
         PageFactory.initElements(CommonUtils.dr, LoginPage.class);
         PageFactory.initElements(CommonUtils.dr, Sidebar.class);
         PageFactory.initElements(CommonUtils.dr, ProductPage.class);
 
         // Add a shutdown hook to ensure teardown is called after tests
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            tearDownStaticInstances();
+            this.tearDownStaticInstances();
+            this.closeReport();
         }));
     }
 
     /**
      * Clears all static instances after test execution.
      */
-    private static void tearDownStaticInstances() {
+    private void tearDownStaticInstances() {
         try {
             // Perform WebDriver cleanup
             CommonUtils.tearDown();
     
             // Clear static references in LoginPage
             for (java.lang.reflect.Field field : LoginPage.class.getDeclaredFields()) {
-                if (java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
             }
 
             for (java.lang.reflect.Field field : Waits.class.getDeclaredFields()){
-                if(java.lang.reflect.Modifier.isStatic(field.getModifiers())){
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
             }
 
             for (java.lang.reflect.Field field : Asserts.class.getDeclaredFields()){
-                if(java.lang.reflect.Modifier.isStatic(field.getModifiers())){
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
@@ -68,7 +74,7 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
 
             // Clear static references in DriverBase
             for (java.lang.reflect.Field field : DriverBase.class.getDeclaredFields()) {
-                if (java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
@@ -76,7 +82,7 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
 
             // Clear static references in Base
             for (java.lang.reflect.Field field : Base.class.getDeclaredFields()) {
-                if (java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
@@ -84,7 +90,7 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
 
             // Clear static references in CommonUtils
             for (java.lang.reflect.Field field : CommonUtils.class.getDeclaredFields()) {
-                if (java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+                if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true); // Make the field accessible
                     field.set(null, null); // Set the static field to null
                 }
@@ -94,6 +100,37 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
         } 
         catch (Exception e) {
             System.err.println("Error while clearing static instances: " + e.getMessage());
+        }
+    }
+
+    @BeforeClass
+    public void startReport() {
+        // Initialize Extent Report
+        ExtentReportUtil.initializeReport();
+    }
+
+    public void closeReport() {
+        // Flush Extent Report
+        ExtentReportUtil.flushReport();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            System.err.println("Thread sleep was interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt(); // Restore the interrupted status
+        }
+
+        // Open the Extent Report in the default browser
+        try {
+            File reportFile = new File("target/ExtentReport.html");
+            if (reportFile.exists()) {
+                Desktop.getDesktop().browse(reportFile.toURI());
+                System.out.println("Extent Report opened in the default browser.");
+            } else {
+                System.err.println("Extent Report file not found: " + reportFile.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            System.err.println("Failed to open Extent Report in browser: " + e.getMessage());
         }
     }
 }

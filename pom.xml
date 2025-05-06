@@ -30,6 +30,13 @@
       <version>7.11.0</version>
     </dependency>
 
+    <!-- Extent Reports -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
+
     <!-- Logging Dependencies -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -85,7 +92,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>31.1-jre</version>
+      <version>32.1.2-jre</version>
     </dependency>
   </dependencies>
 

@@ -10,13 +10,6 @@ public class Asserts {
     
     public static void assertEquals(String actual, String expected) {
         Assert.assertEquals(actual, expected);
-        /*try {
-            
-        } catch (AssertionError e) {
-            System.out.println("AssertionError: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-        }*/
     }
 
     public static void softlyAssertEquals(String actual, String expected) { 
