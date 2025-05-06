@@ -29,8 +29,6 @@ public class DriverBase extends Base {
             logger.error("Exception occurred: {}", e.getMessage(), e);
         }
 
-        System.setProperty("webdriver.gecko.driver", "src/main/java/com/selenium_automation/resources/geckodriver");
-
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--disable-extensions");
 
