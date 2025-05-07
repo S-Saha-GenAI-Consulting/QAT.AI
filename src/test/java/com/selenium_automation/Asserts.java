@@ -12,30 +12,40 @@ public class Asserts {
         Assert.assertEquals(actual, expected);
     }
 
-    public static void softlyAssertEquals(String actual, String expected) { 
-            softAssert.assertEquals(actual, expected);
+    public static void softAssertEquals(String actual, String expected) { 
+        softAssert.assertEquals(actual, expected);
     }
-
-
 
     public static void assertTrue(boolean condition) {
-        try {
-            Assert.assertTrue(condition);
-        } catch (AssertionError e) {
-            System.out.println("AssertionError: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
+        Assert.assertTrue(condition);
     }
+
+    public static void softAssertTrue(boolean condition) {
+        softAssert.assertTrue(condition);
+    }
+
     public static void assertFalse(boolean condition) {
-        try {
-            Assert.assertFalse(condition);
-        } catch (AssertionError e) {
-            System.out.println("AssertionError: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
+        Assert.assertFalse(condition);
+    }
+
+    public static void softAssertFalse(boolean condition) {
+        softAssert.assertFalse(condition);
     }
     
+    public static void assertAll() {
+        softAssert.assertAll();
+    }
+
+    public static void assertNotEquals(String actual, String expected) {
+        Assert.assertNotEquals(actual, expected);
+    }
+
+    public static void assertNotNull(Object object) {
+        Assert.assertNotNull(object);
+    }
+
+    public static void assertNull(Object object) {
+        Assert.assertNull(object);
+    }
     
 }

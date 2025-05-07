@@ -47,7 +47,6 @@ public class CommonUtils extends DriverBase{
     public static void tearDown() {
         
         //logout from the application
-
         try {
             menu.click();
             Thread.sleep(2000);

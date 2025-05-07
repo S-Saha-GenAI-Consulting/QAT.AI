@@ -18,8 +18,6 @@ import static com.selenium_automation.PageFactories.ProductPage.*;
 import static com.selenium_automation.ExtentReportUtil.*;
 
 
-
-
 public class StepMethods{
 
 
@@ -31,7 +29,7 @@ public class StepMethods{
             
             WaitTitleContains("Swag Labs");
             System.out.println("Page title is: " + dr.getTitle());
-            assertEquals(dr.getTitle(), "Swag Labs");
+            softAssertEquals(dr.getTitle(), "Swag Labs");
         }
         catch(Exception e){
             logger(e);
@@ -60,7 +58,7 @@ public class StepMethods{
             password.sendKeys(PASSWORD);
             loginButton.click();
     
-            assertEquals(dr.getTitle(), "Swag Labs");
+            softAssertEquals(dr.getTitle(), "Swag Labs");
 
             Thread.sleep(3000);
 
@@ -79,14 +77,14 @@ public class StepMethods{
             createAndGetTest("Login Page Test");
 
             WaitTitleContains("Swag Labs");
-            assertEquals(dr.getTitle(), "Swag Labs");
+            softAssertEquals(dr.getTitle(), "Swag Labs");
             Thread.sleep(3000);
             
             new Select(sortBy).selectByVisibleText("Price (high to low)");
             Thread.sleep(3000);
 
             scrollAction(SauceLabsOnesie);
-            assertEquals(SauceLabsOnesie.getText(), "Sauce Labs Onesie");
+            softAssertEquals(SauceLabsOnesie.getText(), "Sauce Labs Onesie");
             Thread.sleep(3000);
             SauceLabsOnesie.click();
             Thread.sleep(3000);
