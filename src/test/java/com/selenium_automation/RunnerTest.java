@@ -13,6 +13,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.*;
 
 import static com.selenium_automation.Asserts.*;
+import static com.selenium_automation.CommonUtils.*;
 
 @CucumberOptions(
     plugin = {
@@ -68,7 +69,7 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
                     Thread.sleep(3000);
                 } 
                 catch (InterruptedException e) {
-                    System.err.println("Thread sleep was interrupted: " + e.getMessage());
+                    logger(e);
                     Thread.currentThread().interrupt(); // Restore the interrupted status
                 }
 
@@ -77,67 +78,41 @@ public class RunnerTest extends AbstractTestNGCucumberTests {
                     File reportFile = new File("target/ExtentReport.html");
                     if (reportFile.exists()) {
                         Desktop.getDesktop().browse(reportFile.toURI());
-                        System.out.println("Extent Report opened in the default browser.");
+                        logger.info("Extent Report opened in the default browser.");
                     } 
                     else {
-                        System.err.println("Extent Report file not found: " + reportFile.getAbsolutePath());
+                        logger.info("Extent Report file not found: " + reportFile.getAbsolutePath());
                     }
                 } 
                 catch (IOException e) {
-                    System.err.println("Failed to open Extent Report in browser: " + e.getMessage());
+                    logger(e);
                 }
 
                 // Clear static references in LoginPage
-                for (java.lang.reflect.Field field : LoginPage.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
+                Class<?>[] classesToClear = {
+                    LoginPage.class,
+                    Waits.class,
+                    Asserts.class,
+                    DriverBase.class,
+                    Base.class,
+                    CommonUtils.class
+                };
+
+                for (Class<?> clazz : classesToClear) {
+                    for (java.lang.reflect.Field field : clazz.getDeclaredFields()) {
+                        if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && 
+                            !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
+                            field.setAccessible(true); // Make the field accessible
+                            field.set(null, null); // Set the static field to null
+                        }
                     }
                 }
 
-                for (java.lang.reflect.Field field : Waits.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
-                    }
-                }
-
-                for (java.lang.reflect.Field field : Asserts.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
-                    }
-                }
-
-                // Clear static references in DriverBase
-                for (java.lang.reflect.Field field : DriverBase.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
-                    }
-                }
-
-                // Clear static references in Base
-                for (java.lang.reflect.Field field : Base.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
-                    }
-                }
-
-                // Clear static references in CommonUtils
-                for (java.lang.reflect.Field field : CommonUtils.class.getDeclaredFields()) {
-                    if (java.lang.reflect.Modifier.isStatic(field.getModifiers()) && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true); // Make the field accessible
-                        field.set(null, null); // Set the static field to null
-                    }
-                }
-
-                System.out.println("All static instances have been cleared.");
+                logger.info("All static instances have been cleared.");
             }
         } 
         catch (Exception e) {
-            System.err.println("Error while clearing static instances: " + e.getMessage());
+            logger(e);
         }
     }
 

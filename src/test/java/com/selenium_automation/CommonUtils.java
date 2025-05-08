@@ -12,15 +12,13 @@ import java.util.Set;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
     
 public class CommonUtils extends DriverBase{
 
-    private static final Logger logger = LogManager.getLogger(CommonUtils.class);
-    public static WebDriver dr;
+    protected static final Logger logger = LogManager.getLogger(CommonUtils.class);
 
     // Explicitly initialize WebDriver and navigate to the URL
     public static void startUp() {

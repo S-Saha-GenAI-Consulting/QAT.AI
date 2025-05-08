@@ -61,8 +61,6 @@ public class StepMethods{
             softAssertEquals(dr.getTitle(), "Swag Labs");
 
             Thread.sleep(3000);
-
-
         }
         catch(Exception e){
             logger(e);
@@ -88,8 +86,6 @@ public class StepMethods{
             Thread.sleep(3000);
             SauceLabsOnesie.click();
             Thread.sleep(3000);
-            
-
         }
         catch(Exception e){
             logger(e);

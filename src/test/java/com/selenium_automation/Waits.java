@@ -1,6 +1,5 @@
 package com.selenium_automation;
 
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -16,10 +15,8 @@ public class Waits {
 				.pollingEvery(java.time.Duration.ofMillis(500))
 				.ignoring(Exception.class)
 				.until(ExpectedConditions.titleIs(title));
-		} catch (TimeoutException e) {
-			System.out.println("TimeoutException: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Exception: " + e.getMessage());
+			logger(e);
 		}
 	}
 	
@@ -32,10 +29,8 @@ public class Waits {
 				.pollingEvery(java.time.Duration.ofMillis(500))
 				.ignoring(Exception.class)
 				.until(ExpectedConditions.titleContains(title));
-		} catch (TimeoutException e) {
-			System.out.println("TimeoutException: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Exception: " + e.getMessage());
+			logger(e);
 		}
 	}
 
@@ -46,10 +41,8 @@ public class Waits {
 				.pollingEvery(java.time.Duration.ofMillis(500))
 				.ignoring(Exception.class)
 				.until(ExpectedConditions.visibilityOf(element));
-		} catch (TimeoutException e) {
-			System.out.println("TimeoutException: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Exception: " + e.getMessage());
+			logger(e);
 		}
 	}
 
@@ -61,10 +54,8 @@ public class Waits {
 				.pollingEvery(java.time.Duration.ofMillis(500))
 				.ignoring(Exception.class)
 				.until(ExpectedConditions.elementToBeClickable(element));
-		} catch (TimeoutException e) {
-			System.out.println("TimeoutException: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Exception: " + e.getMessage());
+			logger(e);
 		}
 	}
     

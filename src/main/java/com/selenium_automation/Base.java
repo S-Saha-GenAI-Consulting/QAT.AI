@@ -5,15 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 public class Base {    
 
+	public static WebDriver dr;
 	private static WebDriver driver;
-	
-	public static  WebDriver dr;
 
-	public WebDriver getDriver(){
+	public WebDriver getDriver() {
 		dr = driver;
 		return dr;
 	}
-
 	
 }
 
