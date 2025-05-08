@@ -27,7 +27,7 @@ public class StepMethods{
 
             createAndGetTest("Login Page Test");
             
-            WaitTitleContains("Swag Labs");
+            waitTitle("Swag Labs");
             System.out.println("Page title is: " + dr.getTitle());
             softAssertEquals(dr.getTitle(), "Swag Labs");
         }
@@ -76,7 +76,7 @@ public class StepMethods{
 
             createAndGetTest("Login Page Test");
 
-            WaitTitleContains("Swag Labs");
+            waitTitle("Swag Labs");
             softAssertEquals(dr.getTitle(), "Swag Labs");
             Thread.sleep(3000);
             
