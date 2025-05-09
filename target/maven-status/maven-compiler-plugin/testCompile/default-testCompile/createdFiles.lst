@@ -1,4 +1,3 @@
-runner/TestRunner.class
 commonutils/Waits.class
 commonutils/CommonUtils.class
 pages/ProductPage.class
@@ -6,4 +5,5 @@ commonutils/Asserts.class
 stepmethods/StepMethods.class
 steps/Step.class
 pages/LoginPage.class
+TestRunner.class
 pages/Sidebar.class

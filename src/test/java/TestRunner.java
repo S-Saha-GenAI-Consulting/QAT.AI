@@ -1,4 +1,3 @@
-package runner;
 import java.io.IOException;
 
 import static commonutils.Asserts.*;
